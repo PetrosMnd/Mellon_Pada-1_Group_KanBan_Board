@@ -110,13 +110,39 @@ div.body-section {
 }
 
 /* here we add some spacing between tasks since bullets are gone ( it is optional though)*/
-#ulToDo li, #ulInProgress li, #ulDone li {
+#ulToDo li {
+    background-color: #ffeded;
+    border-left: 5px solid #ff4d4d;
     padding: 10px;
-    margin-bottom: 5px;
-    background-color: #f9f9f9;            
-    border: 1px solid #ddd;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    transition: all 0.3s ease; /* Για απαλή κίνηση */
     cursor: pointer;
-} 
+}
+#ulInProgress li {
+    background-color: #fff9db;
+    border-left: 5px solid #fab005;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+#ulDone li {
+    background-color: #ebfbee;
+    border-left: 5px solid #40c057;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+#ulToDo li:hover, #ulInProgress li:hover, #ulDone li:hover {
+    transform: scale(1.02); /* megalwnoume ligo thn karta */
+    box-shadow: 0 4px 8px rba(0,0,0,0.1);
+    filter: brightness(0.95);
+}
 
 
 /* ===== PopUp Window ===== */
