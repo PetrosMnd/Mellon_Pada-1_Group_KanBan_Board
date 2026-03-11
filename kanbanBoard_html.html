@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kanban Board</title>
+    <script src="kanbanBoard_js.js"></script>
+    <link rel="stylesheet" href="file:///C:/Users/PC/Documents/training/lesson4/kanbanBoard_css.css"/>
+</head>
+<body>
+    <h3>Kanban Board</h3>
+    <!-- Add Taks / Section1 -->
+    <div class="body-section">
+        <h3>Add Task</h3>
+        <form>
+            <label for="addTaskName">Name:</label>
+            <input type="text" id="addTaskName" name="addTaskName">
+            <label for="addTaskDescr">Description:</label>
+            <input type="text" id="addTaskDescr" name="addTaskDescr">
+            <select name="category" id="selectCategory">
+                <option value="To Do"> To Do </option>
+                <option value="In Progress"> In Progress </option>
+                <option value="Done"> Done </option>
+            </select>
+            <input id="addTaskSubmit" type="submit" value="Submit">
+        </form>
+    </div>
+
+    <!-- Display Taks / Section3 -->
+    <div class="body-section">
+    <div id="displayTasks" class="display-container">
+        <!-- To DO -->
+        <div id="toDo" class="task-category" title="Tasks To Do:">
+            <h3>Tasks To Do</h3>
+            <ul id="ulToDo"></ul>
+        </div>
+        <!-- In progress -->
+        <div id="inProgress" class="task-category" title="Tasks in Progress:">
+            <h3>Tasks in Progress</h3>
+            <ul id="ulInProgress"></ul>
+        </div>
+        <!-- Done -->
+        <div id="done" class="task-category" title="Tasks Done:">
+            <h3>Tasks Done</h3>
+            <ul id="ulDone"></ul>
+        </div>
+    </div>
+    </div> 
+    
+    <!-- Pop up Window -->
+    <div class="modal" id="modal">
+        <div class="modal-header">
+            <div class="modal-taskdetails">
+                <span class="title" id="modalTaskName"></span>
+                <span class="description" id="modalTaskDescr">rrrrr</span>
+                <span class="category" id="modalTaskCateg">To do</span>
+            </div>
+            <button class="close-button" id="closeModal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <button id="delTaskBtn">Delete</button>
+            <button id="toDoTaskBtn">To Do</button>
+            <button id="inProgTaskBtn">In Progress</button>
+            <button id="doneTaskBtn">Done</button>
+        </div>
+    </div>
+    <div id="overlay"></div>
+</body>
+</html>
