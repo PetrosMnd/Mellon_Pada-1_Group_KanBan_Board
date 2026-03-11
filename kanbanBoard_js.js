@@ -134,7 +134,7 @@ function initializeStorage () {
     console.log(JSON.stringify(kanbanBoard));
     localStorage.setItem("kanbanBoard", JSON.stringify(kanbanBoard));
 }
-// initializeStorage()
+initializeStorage()
 
 function loadStorage (){
     kanbanBoard = JSON.parse(localStorage.getItem("kanbanBoard"));
