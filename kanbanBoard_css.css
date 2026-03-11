@@ -102,4 +102,21 @@ div.body-section {
     opacity: 1;
     pointer-events: all;
 }
+
+#ulToDo, #ulInProgress, #ulDone {
+    list-style-type: none; /* Removes the bullets */
+    margin: 0;             /* Removes default browser spacing */
+    padding: 0;            /* Removes default indentation */
+}
+
+/* here we add some spacing between tasks since bullets are gone ( it is optional though)*/
+#ulToDo li, #ulInProgress li, #ulDone li {
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: #f9f9f9;            
+    border: 1px solid #ddd;
+    cursor: pointer;
+} 
+
+
 /* ===== PopUp Window ===== */
