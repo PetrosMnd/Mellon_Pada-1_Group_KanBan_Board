@@ -7,6 +7,7 @@ let kanbanBoard = {
 document.addEventListener("DOMContentLoaded", loadStorage);
 document.addEventListener("DOMContentLoaded", addTask);
 document.addEventListener("DOMContentLoaded", deleteTask);
+document.addEventListener("DOMContentLoaded", clearAllTasks);
 
 function addTask (){
     document.getElementById("addTaskSubmit").addEventListener("click", 
@@ -134,7 +135,7 @@ function initializeStorage () {
     console.log(JSON.stringify(kanbanBoard));
     localStorage.setItem("kanbanBoard", JSON.stringify(kanbanBoard));
 }
-initializeStorage()
+// initializeStorage()
 
 function loadStorage (){
     kanbanBoard = JSON.parse(localStorage.getItem("kanbanBoard"));
@@ -195,3 +196,20 @@ function renderUI (){
 
 }
 // ========== Local Storage ==========
+
+
+// ========== Clear All ==========
+function clearAllTasks(){
+    document.getElementById("clearAllBtn").addEventListener("click", function(){
+        console.log("Clicked clear button")
+        kanbanBoard.toDo = []
+        kanbanBoard.inProgress = []
+        kanbanBoard.done = []
+
+        //Store empty columns
+        localStorage.setItem("kanbanBoard", JSON.stringify(kanbanBoard)); 
+
+        loadStorage()
+    })
+
+}
