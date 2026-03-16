@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", loadStorage);
 document.addEventListener("DOMContentLoaded", addTask);
 document.addEventListener("DOMContentLoaded", deleteTask);
 document.addEventListener("DOMContentLoaded", clearAllTasks);
+document.addEventListener("DOMContentLoaded", moveFromDoingToInProgress);
 
 function addTask (){
     document.getElementById("addTaskSubmit").addEventListener("click", 
@@ -212,4 +213,39 @@ function clearAllTasks(){
         loadStorage()
     })
 
+}
+
+// Doing --> In Progress
+function moveFromDoingToInProgress (){
+    document.getElementById("inProgTaskBtn").addEventListener("click", function(e){
+        console.log("Clicked In Progress button");
+        let taskName = document.getElementById("modalTaskName").innerText;
+        let allTasks = [...kanbanBoard.toDo, ...kanbanBoard.inProgress, ...kanbanBoard.done];
+        let foundTask = allTasks.find(t => t.taskName === taskName);
+        console.log(foundTask);
+        
+        let arr = findArrByCategory(foundTask.category);
+        let arrTasks = [...arr]
+        let taskIndex = arrTasks.indexOf(foundTask);
+        let firstArrTasks = arrTasks.slice(0,taskIndex);
+        let secArrTasks = arrTasks.slice(taskIndex+1,arrTasks.length);
+        let newArrTasks = firstArrTasks.concat(secArrTasks);
+
+        switch (foundTask.category){
+            case "To Do":
+                kanbanBoard.toDo = newArrTasks;
+            break;
+            case "In Progress":
+                kanbanBoard.inProgress = newArrTasks;
+                break;
+            case "Done":
+                kanbanBoard.done = newArrTasks;
+                break;
+        }
+        kanbanBoard.inProgress.push(foundTask)
+        console.log(kanbanBoard);
+        updateStorageWithKanbanBoard(kanbanBoard);
+        handleClickByClosedButton();
+        loadStorage();
+    })
 }
